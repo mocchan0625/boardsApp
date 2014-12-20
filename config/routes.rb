@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'boards' => 'boards#index'
-  get 'boards/new' => 'boards#new'
-  post 'boards' => 'boards#create'
-  
+  resources :boards do
+    resources :comments, only: [:create, :destroy]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
